@@ -1,30 +1,33 @@
 <script setup lang="ts">
-import Card from './Card.vue'
+import type { Product } from './types'
+import Card from '@/components/Card.vue'
 
-const onClickAdd = () => {
-  alert('onClickAdd')
+interface Props {
+  items: Product[]
 }
-const onClickFavorite = () => {
-  alert('onClickFavorite')
-}
+defineProps<Props>()
+
+const emit = defineEmits(['addToFavorite'])
+
+const onClickFavorite = (sneakerId: number) => emit('addToFavorite', sneakerId)
+
+const onClickAdd = () => {}
 </script>
 
 <template>
   <div class="grid grid-cols-4 gap-5">
     <Card
-      :isFavorite="true"
+      v-for="item in items"
+      :id="item.id"
+      :key="item.id"
+      :isFavorite="item.isFavorite"
       :isAdded="true"
-      :price="5000"
-      title="Nike"
-      imageUrl="/sneakers/sneakers-1.jpg"
+      :price="item.price"
+      :title="item.title"
+      :imageUrl="item.imageUrl"
       :on-click-add="onClickAdd"
       :on-click-favorite="onClickFavorite"
     />
-    <Card :price="5000" title="Nike" imageUrl="/sneakers/sneakers-2.jpg" />
-    <Card :price="5000" title="Nike" imageUrl="/sneakers/sneakers-3.jpg" />
-    <Card :price="5000" title="Nike" imageUrl="/sneakers/sneakers-4.jpg" />
-    <Card :price="5000" title="Nike" imageUrl="/sneakers/sneakers-5.jpg" />
-    <Card :price="5000" title="Nike" imageUrl="/sneakers/sneakers-6.jpg" />
   </div>
 </template>
 
