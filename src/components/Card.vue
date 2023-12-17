@@ -29,7 +29,7 @@ const props = defineProps({
         <span class="text-slate-400">Цена:</span>
         <b>{{ price }} руб.</b>
       </div>
-      <img @click="onClickAdd" :src="isAdded ? '/plus.svg' : '/checked.svg'" alt="plus" />
+      <img @click="onClickAdd" :src="isAdded ? '/checked.svg' : '/plus.svg'" alt="plus" />
     </div>
   </div>
 </template>

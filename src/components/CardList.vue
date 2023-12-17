@@ -7,11 +7,9 @@ interface Props {
 }
 defineProps<Props>()
 
-const emit = defineEmits(['addToFavorite'])
+const emit = defineEmits(['addToFavorite', 'addToCart'])
 
 const onClickFavorite = (sneakerId: number) => emit('addToFavorite', sneakerId)
-
-const onClickAdd = () => {}
 </script>
 
 <template>
@@ -21,11 +19,11 @@ const onClickAdd = () => {}
       :id="item.id"
       :key="item.id"
       :isFavorite="item.isFavorite"
-      :isAdded="true"
+      :isAdded="item.isAdded"
       :price="item.price"
       :title="item.title"
       :imageUrl="item.imageUrl"
-      :on-click-add="onClickAdd"
+      :on-click-add="() => emit('addToCart', item)"
       :on-click-favorite="onClickFavorite"
     />
   </div>
