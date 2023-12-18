@@ -44,6 +44,7 @@ const createOrder = async () => {
     cart.value = []
     return data
   } catch (e) {
+    console.error(e)
   } finally {
     isCreatingOrder.value = false
   }
