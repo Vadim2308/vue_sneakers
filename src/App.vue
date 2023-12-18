@@ -4,7 +4,6 @@ import Header from './components/Header.vue'
 import type { CartContext, Product } from '@/components/types'
 import { $api } from '@/axios'
 import Drawer from '@/components/Drawer.vue'
-import Home from './pages/Home.vue'
 
 const cart = ref<Product[]>([])
 
